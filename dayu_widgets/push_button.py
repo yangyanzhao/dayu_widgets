@@ -137,3 +137,12 @@ class MPushButton(QtWidgets.QPushButton):
         """Set MPushButton to tiny size"""
         self.set_dayu_size(dayu_theme.tiny)
         return self
+
+    def custom_color(self, color):
+        """
+        Set the background color of the button using a custom color.
+        :param color: A string representing the color in hex format (e.g., "#FF00FF").
+        :return: None
+        """
+        self.setStyleSheet(f"background-color: {color};")
+        return self

@@ -10,12 +10,16 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import asyncio
 # Import built-in modules
 import functools
+import sys
 
+from PySide2.QtWidgets import QApplication
 # Import third-party modules
 from Qt import QtCore
 from Qt import QtWidgets
+from qasync import QEventLoop, asyncSlot
 
 # Import local modules
 from dayu_widgets import dayu_theme
@@ -31,100 +35,84 @@ from dayu_widgets.push_button import MPushButton
 import examples._mock_data as mock
 
 
-def h(*args):
-    cls = args[0]
-    widget = cls()
-    for i in args:
-        if isinstance(i, dict):
-            for attr, value in i.get("props", {}).items():
-                widget.setProperty(attr, value)
-            for signal, slot in i.get("on", {}).items():
-                getattr(widget, signal).connect(slot)
-        elif isinstance(i, list):
-            lay = QtWidgets.QHBoxLayout()
-            for j in i:
-                lay.addWidget(j)
-            widget.setLayout(lay)
-    return widget
-
-
-class MFetchDataThread(QtCore.QThread):
-    def __init__(self, parent=None):
-        super(MFetchDataThread, self).__init__(parent)
-
-    def run(self, *args, **kwargs):
-        # Import built-in modules
-        import time
-
-        time.sleep(4)
-
-
 class TableViewExample(QtWidgets.QWidget, MFieldMixin):
     def __init__(self, parent=None):
         super(TableViewExample, self).__init__(parent)
         self._init_ui()
 
     def _init_ui(self):
+        # 构建数据模型
         model_1 = MTableModel()
         model_1.set_header_list(mock.header_list)
-        model_sort = MSortFilterModel()
-        model_sort.setSourceModel(model_1)
+        model_1.set_data_list(mock.data_list)
 
+        # 构建排序模型
+        self.model_sort = MSortFilterModel()
+        self.model_sort.setSourceModel(model_1)
+        self.model_sort.set_header_list(mock.header_list)
+
+        # 构建小表格
         table_small = MTableView(size=dayu_theme.small, show_row_count=True)
+        table_small.setModel(self.model_sort)
+        table_small.set_header_list(mock.header_list)
+
+        # 构建带网格的表格
         table_grid = MTableView(size=dayu_theme.small, show_row_count=True)
         table_grid.setShowGrid(True)
-        table_default = MTableView(size=dayu_theme.medium, show_row_count=True)
-        thread = MFetchDataThread(self)
+        table_grid.setModel(self.model_sort)
+        table_grid.set_header_list(mock.header_list)
 
-        self.loading_wrapper = MLoadingWrapper(widget=table_default, loading=False)
-        thread.started.connect(
-            functools.partial(self.loading_wrapper.set_dayu_loading, True)
-        )
-        thread.finished.connect(
-            functools.partial(self.loading_wrapper.set_dayu_loading, False)
-        )
-        thread.finished.connect(functools.partial(table_default.setModel, model_sort))
+        # 构建大表格
+        table_large = MTableView(size=dayu_theme.large, show_row_count=False)
+        table_large.setModel(self.model_sort)
+        table_large.set_header_list(mock.header_list)
+
+        # 构建中型表格
+        self.table_default = MTableView(size=dayu_theme.medium, show_row_count=True)
+        self.table_default.set_header_list(mock.header_list)
+
+        self.loading_wrapper = MLoadingWrapper(widget=self.table_default, loading=False)
+
         button = MPushButton(text="Get Data: 4s")
-        button.clicked.connect(thread.start)
+        button.clicked.connect(self.get_data)
         switch_lay = QtWidgets.QHBoxLayout()
         switch_lay.addWidget(button)
         switch_lay.addStretch()
-        table_large = MTableView(size=dayu_theme.large, show_row_count=False)
 
-        table_small.setModel(model_sort)
-        table_grid.setModel(model_sort)
-        table_large.setModel(model_sort)
-        model_sort.set_header_list(mock.header_list)
-        table_small.set_header_list(mock.header_list)
-        table_grid.set_header_list(mock.header_list)
-        table_default.set_header_list(mock.header_list)
-        table_large.set_header_list(mock.header_list)
-        model_1.set_data_list(mock.data_list)
-
+        # 搜索栏
         line_edit = MLineEdit().search().small()
-        line_edit.textChanged.connect(model_sort.set_search_pattern)
+        line_edit.textChanged.connect(self.model_sort.set_search_pattern)
 
         main_lay = QtWidgets.QVBoxLayout()
         main_lay.addWidget(line_edit)
-        main_lay.addWidget(MDivider("Small Size"))
+        main_lay.addWidget(MDivider("小型表格"))
         main_lay.addWidget(table_small)
-        main_lay.addWidget(MDivider("Default Size"))
+        main_lay.addWidget(MDivider("中型表格"))
         main_lay.addLayout(switch_lay)
         main_lay.addWidget(self.loading_wrapper)
-        main_lay.addWidget(MDivider("Large Size (Hide Row Count)"))
+        main_lay.addWidget(MDivider("大型表格(隐藏行号)"))
         main_lay.addWidget(table_large)
-        main_lay.addWidget(MDivider("With Grid"))
+        main_lay.addWidget(MDivider("网格线表格"))
         main_lay.addWidget(table_grid)
         main_lay.addStretch()
         main_lay.addWidget(MAlert('Simply use "MItemViewSet" or "MItemViewFullSet"'))
         self.setLayout(main_lay)
 
+    @asyncSlot()
+    async def get_data(self):
+        self.loading_wrapper.set_dayu_loading(True)
+        await asyncio.sleep(2)
+        self.loading_wrapper.set_dayu_loading(False)
+        self.table_default.setModel(self.model_sort)
+
 
 if __name__ == "__main__":
-    # Import local modules
-    from dayu_widgets.qt import application
+    app = QApplication(sys.argv)
 
-    with application() as app:
-        test = TableViewExample()
-        dayu_theme.apply(test)
-        test.show()
+    loop = QEventLoop(app)
+    asyncio.set_event_loop(loop)
+    test = TableViewExample()
+    dayu_theme.apply(test)
+    test.show()
+    loop.run_forever()
+    sys.exit(app.exec_())

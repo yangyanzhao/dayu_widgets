@@ -104,13 +104,13 @@ class MLoadingWrapper(QtWidgets.QWidget):
         dayu_loading: bool. current loading state.
     """
 
-    def __init__(self, widget, loading=True, parent=None):
+    def __init__(self, widget, loading=True, parent=None, size=None, color=None):
         super(MLoadingWrapper, self).__init__(parent)
         self._widget = widget
         self._mask_widget = QtWidgets.QFrame()
         self._mask_widget.setObjectName("mask")
         self._mask_widget.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        self._loading_widget = MLoading()
+        self._loading_widget = MLoading(size=size, color=color)
         self._loading_widget.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
 
         self._main_lay = QtWidgets.QGridLayout()
