@@ -47,10 +47,7 @@
   from PySide2.QtWidgets import QWidget, QApplication, QVBoxLayout, QHBoxLayout
   from dayu_widgets.qt import MIcon
   from qasync import QEventLoop
-  
   from dayu_widgets import MTheme, MPushButton, MPushButtonGroup
-  
-  
   class DemoWidget(QWidget):
       def __init__(self, parent=None):
           super(DemoWidget, self).__init__(parent)
@@ -117,9 +114,6 @@
           self.sub_layout_6.addWidget(button_group_h)
           self.sub_layout_6.addStretch()
           self.main_layout.addStretch()
-  
-  
-  
   if __name__ == '__main__':
       # 创建主循环
       app = QApplication([])
