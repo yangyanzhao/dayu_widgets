@@ -1,16 +1,16 @@
 ## 简介
 `MLoading` 和 `MLoadingWrapper` 是两个用于显示加载动画的控件。`MLoading` 提供了一个旋转的加载动画图标，而 `MLoadingWrapper` 则在此基础上提供了一个包裹其他控件的容器，可以在需要时显示或隐藏加载动画。
 ********
-### 基础用法
+## 基础用法
   - `MLoading()`![img_34.png](img_34.png)
   
-### 设置大小
+## 设置大小
   - `MLoading(size=50)`![img_35.png](img_35.png)
   
-### 设置颜色
+## 设置颜色
 - `MLoading(color="blue")`![img_36.png](img_36.png)
 
-### 设置动画类型
+## 设置动画类型
 - ```python
   huge_loading = MLoading.huge(color='red')  # 创建巨大的加载动画
   large_loading = MLoading.large()  # 创建大的加载动画
@@ -20,7 +20,7 @@
   ```
   ![img_39.png](img_39.png)
 ********
-### MLoadingWrapper包装器
+## MLoadingWrapper包装器
   - 初始化
     - ```python
       MLoadingWrapper(widget=self.text_edit, loading=False, size=64, color=dayu_theme.red)
