@@ -1,21 +1,19 @@
-import sys
-from PySide2.QtWidgets import QApplication, QWidget, QVBoxLayout
-from dayu_widgets import MTheme, MPushButton
+import os
 
-if __name__ == '__main__':
-    # 创建主循环
-    app = QApplication([])
 
-    # 创建窗口
-    widget = QWidget()
-    # 设置主题
-    MTheme().apply(widget)
-    # 窗口布局
-    layout = QVBoxLayout(widget)
-    # 使用控件
-    button = MPushButton("默认按钮").primary()
-    layout.addWidget(button)
-    # 显示窗口
-    widget.show()
+def list_files(directory):
+    # 遍历目录下的所有文件和文件夹
+    for root, dirs, files in os.walk(directory):
+        for index, file in enumerate(files):
+            # 打印文件的完整路径
+            text = fr"https://raw.githubusercontent.com/yangyanzhao/dayu_widgets/refs/heads/master/screenshots/{file}"
+            t = fr"![screenshots/alert_dark.png]({text})"
+            print(t)
+            index += 1
+            if index % 2 == 0:
+                print("*" * 6)
 
-    sys.exit(app.exec_())
+
+# 示例目录
+directory = r'D:\pythonwork\dayu_widgets\screenshots'
+list_files(directory)
