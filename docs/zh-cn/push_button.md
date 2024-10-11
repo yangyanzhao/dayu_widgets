@@ -41,6 +41,7 @@
 - **组合使用**
   - `MPushButton("删除按钮", MIcon("trash_line.svg", "#ddd")).danger().medium()`![img_11.png](img_11.png)
 ## 示例代码
+
 ```python
 import asyncio
 from PySide2.QtWidgets import QWidget, QApplication, QVBoxLayout, QHBoxLayout
