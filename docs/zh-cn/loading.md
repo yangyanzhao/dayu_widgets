@@ -78,7 +78,6 @@ class DemoWidget(QWidget):
         # 使用MLoadingWrapper加载包装器来包裹住文本框
         self.loading_wrapper = MLoadingWrapper(widget=self.text_edit, loading=False, size=64, color=dayu_theme.red)
         self.main_layout.addWidget(self.loading_wrapper)
-
     @asyncSlot()
     async def btn_handle(self):
         # 开启加载
@@ -94,6 +93,7 @@ class DemoWidget(QWidget):
             "在你介入没有明确需求、品牌或目的的生意时，"
             "风险将会累积。"
             "当你去做一项自己喜欢而不是需要去做的生意时，风险在累积。" * 2)
+        pass
 if __name__ == '__main__':
     # 创建主循环
     app = QApplication([])
