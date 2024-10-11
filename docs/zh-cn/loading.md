@@ -1,10 +1,47 @@
+## 基本用法
+`MLoading` 和 `MLoadingWrapper` 是两个用于显示加载动画的控件。`MLoading` 提供了一个旋转的加载动画图标，而 `MLoadingWrapper` 则在此基础上提供了一个包裹其他控件的容器，可以在需要时显示或隐藏加载动画。
+********
+- **基础用法**
+  - `MLoading()`![img_34.png](img_34.png)
+  
+- **设置大小** 
+  - `MLoading(size=50)`![img_35.png](img_35.png)
+  
+- **设置颜色**
+- `MLoading(color="blue")`![img_36.png](img_36.png)
+
+- **设置动画类型**
+- ```python
+  huge_loading = MLoading.huge(color='red')  # 创建巨大的加载动画
+  large_loading = MLoading.large()  # 创建大的加载动画
+  medium_loading = MLoading.medium()  # 创建中等大小的加载动画
+  small_loading = MLoading.small()  # 创建小的加载动画
+  tiny_loading = MLoading.tiny()  # 创建极小的加载动画
+  ```
+  ![img_39.png](img_39.png)
+********
+- **MLoadingWrapper包装器**
+  - 初始化
+    - ```python
+      MLoadingWrapper(widget=self.text_edit, loading=False, size=64, color=dayu_theme.red)
+      ```
+      - text_edit:被包裹的控件
+      - loading:是否立即显示加载动画
+      - size:加载动画的大小
+      - color:加载动画的颜色
+  - 显示/隐藏加载动画
+    - ```python
+      wrapper.set_dayu_loading(True) # 显示加载动画 
+      wrapper.set_dayu_loading(False) # 隐藏加载动画
+  - 获取加载状态
+    - ```python
+      is_loading = wrapper.dayu_loading # 获取当前是否正在加载
+## 示例代码
+```python
 import asyncio
 from PySide2.QtWidgets import QWidget, QApplication, QVBoxLayout, QPushButton, QTextEdit, QHBoxLayout
 from qasync import QEventLoop, asyncSlot
-
 from dayu_widgets import dayu_theme, MLoadingWrapper, MTheme, MLoading
-
-
 class DemoWidget(QWidget):
     def __init__(self, parent=None):
         super(DemoWidget, self).__init__(parent)
@@ -55,8 +92,6 @@ class DemoWidget(QWidget):
             "在你介入没有明确需求、品牌或目的的生意时，"
             "风险将会累积。"
             "当你去做一项自己喜欢而不是需要去做的生意时，风险在累积。" * 2)
-
-
 if __name__ == '__main__':
     # 创建主循环
     app = QApplication([])
@@ -71,3 +106,4 @@ if __name__ == '__main__':
     # 显示窗口
     demo_widget.show()
     loop.run_forever()
+

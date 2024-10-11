@@ -1,6 +1,6 @@
 ## Button按钮
 `MPushButton` 继承了 `QPushButton` 组件，提供了多种按钮样式和尺寸选择。
-
+******
 - **默认按钮** 
   - `MPushButton("默认按钮")`![img_1.png](img_1.png)
   
@@ -39,6 +39,8 @@
 
 - **组合使用**
   - `MPushButton("删除按钮", MIcon("trash_line.svg", "#ddd")).danger().medium()`![img_11.png](img_11.png)
+
+******
 ## 示例代码
 
 ```python
