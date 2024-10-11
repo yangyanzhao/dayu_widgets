@@ -35,8 +35,7 @@
   
 - **自定义按钮图标**
   
-  - `MPushButton("自定义图标按钮", MIcon("图标.png", "#ddd"))`![img_10.png](img_10.png)
-   将图标放在 `dayu_widgets/static` 目录下，使用 `MIcon` 函数引入即可。
+  - `MPushButton("自定义图标按钮", MIcon("path/to/icon.png", "#ddd"))`![img_10.png](img_10.png)
 
 - **组合使用**
   - `MPushButton("删除按钮", MIcon("trash_line.svg", "#ddd")).danger().medium()`![img_11.png](img_11.png)

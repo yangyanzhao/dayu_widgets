@@ -58,7 +58,7 @@ class DemoWidget(QWidget):
         self.main_layout.addLayout(self.sub_layout_5)
         self.sub_layout_5.addWidget(MPushButton("自定义颜色按钮").custom_color("#000000"))
         # 将自定义的图标文件放置在dayu_widgets/static资源文件夹中，然后引用即可。
-        self.sub_layout_5.addWidget(MPushButton("自定义图标按钮", MIcon("图标.png", "#ddd")))
+        self.sub_layout_5.addWidget(MPushButton("自定义图标按钮", MIcon("check.png", "#ddd")))
         self.sub_layout_5.addStretch()
 
         # 按钮组
