@@ -13,5 +13,8 @@
 
 
 ```python
-import dayu_widgets
+pip install dayu_widgets
+```
+```python
+pip install dayu_widgets_tag
 ```
