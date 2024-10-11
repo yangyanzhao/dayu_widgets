@@ -7,7 +7,7 @@
 
     * 通用
 
-        * [MIcon](/icon.md)
+        * [MIcon](/zh-cn/icon.md)
         * [MLabel](/zh-cn/label.md)
         * [MLoading 加载图标](/zh-cn/loading.md)
         * [MPixmap](/zh-cn/pixmap.md)
