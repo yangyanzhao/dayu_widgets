@@ -1,16 +1,14 @@
 ## 安装
-```python
-pip install PySide2
-```
-```python
-pip install qasync
-```
-```python
-pip install dayu_widgets
-```
-```python
-pip install dayu_widgets_tag
-```
+- ```python
+  pip install PySide2
+- ```python
+  pip install qasync
+- ```python
+  pip install dayu_widgets
+- ```python
+  pip install dayu_widgets_tag
+
+******
 ## 导入控件
 ```python
 from dayu_widgets import MTheme, MPushButton

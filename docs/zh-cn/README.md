@@ -11,8 +11,8 @@
 * 暗色 #fa8c16
 * 亮色 #1890ff
 ******
-![screenshots/alert_dark.png](../../screenshots/alert_dark.png)
-![screenshots/alert_light.png](../../screenshots/alert_light.png)
+![screenshots/alert_dark.png](dayu_widgets/screenshots/alert_dark.png)
+![screenshots/alert_light.png](dayu_widgets/screenshots/alert_light.png)
 ******
 ![screenshots/avatar_dark.png](../../screenshots/avatar_dark.png)
 ![screenshots/avatar_light.png](../../screenshots/avatar_light.png)
