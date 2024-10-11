@@ -97,11 +97,9 @@ class DemoWidget(QWidget):
 if __name__ == '__main__':
     # 创建主循环
     app = QApplication([])
-
     # 创建异步事件循环
     loop = QEventLoop(app)
     asyncio.set_event_loop(loop)
-
     # 创建窗口
     demo_widget = DemoWidget()
     MTheme(theme="light", primary_color=MTheme.yellow).apply(demo_widget)
