@@ -3,13 +3,13 @@
 ********
 ## 基础用法
   - `MLoading()`![img_34.png](img_34.png)
-  
+******** 
 ## 设置大小
   - `MLoading(size=50)`![img_35.png](img_35.png)
-  
+********  
 ## 设置颜色
 - `MLoading(color="blue")`![img_36.png](img_36.png)
-
+********
 ## 设置动画类型
 - ```python
   huge_loading = MLoading.huge(color='red')  # 创建巨大的加载动画

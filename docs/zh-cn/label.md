@@ -3,21 +3,25 @@
 ******
 ## 文本
   - `MLabel("Hello,World!")`![img_14.png](img_14.png)
+********
 ## 标题
   - `MLabel("Hello,World!").h1()`![img_15.png](img_15.png)
   - `MLabel("Hello,World!").h2()`![img_16.png](img_16.png)
   - `MLabel("Hello,World!").h3()`![img_17.png](img_17.png)
   - `MLabel("Hello,World!").h4()`![img_18.png](img_18.png)
+********
 ## 类型
   - `MLabel("Hello,World!").secondary()`![img_19.png](img_19.png)
   - `MLabel("Hello,World!").warning()`![img_20.png](img_20.png)
   - `MLabel("Hello,World!").danger()`![img_21.png](img_21.png)
+********
 ## 禁用
   - ```python
     labe = MLabel("Hello,World!")
     labe.setDisabled(True) # 设置为禁用类型
     ```
     ![img_22.png](img_22.png)
+********
 ## 样式
   - `MLabel("Hello,World!").strong()  # 加粗`![img_23.png](img_23.png)
   - `MLabel("Hello,World!").mark()  # 标记`![img_24.png](img_24.png)
@@ -25,6 +29,7 @@
   - `MLabel("Hello,World!").delete()  # 删除线`![img_26.png](img_26.png)
   - `MLabel("Hello,World!").underline()  # 下划线`![img_27.png](img_27.png)
   - `MLabel("Hello,World!").h1().warning().strong().underline().delete()  # 标题+警告+加粗+下划线+删除线`![img_28.png](img_28.png)
+********
 ## 超链接
   - ```python
     label = MLabel()
@@ -33,6 +38,7 @@
     label.set_link(href="https://www.baidu.com", text="百度一下,你就知道")
     ```
     ![img_29.png](img_29.png)
+********
 ## 省略模式
   - 左省略
   ```python
