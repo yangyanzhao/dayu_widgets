@@ -1,3 +1,42 @@
+## 简介
+`MToolButton` 是一个自定义的 `QToolButton` 类，提供了多种样式和大小设置选项，支持 SVG 图标，并且在鼠标悬停时会高亮显示图标。它适用于需要美观且功能丰富的工具按钮的应用程序。
+## 实例化
+  - `tool_button = MToolButton(parent=None)`
+********
+## 设置图标
+  - `tool_button.svg("path/to/icon.svg") # 设置自定义图标` 
+  - `tool_button.svg("add_line.svg") # 内置图标`
+  - `tool_button.set_dayu_svg("add_line.svg")  # 设置图标`![img_43.png](img_43.png)
+******
+## 设置大小
+  - `tool_button.huge()  # 设置为巨大尺寸`
+  - `tool_button.large()  # 设置为大尺寸`
+  - `tool_button.medium()  # 设置为中等尺寸`
+  - `tool_button.small()  # 设置为小尺寸`
+  - `tool_button.tiny()  # 设置为微小尺寸`
+  - `tool_button.set_dayu_size(value:int)  # 自定义工具按钮大小`![img_44.png](img_44.png)
+******
+## 设置文字
+  - `tool_button.setText("Login") # 设置文字` ![img_45.png](img_45.png)
+******
+## 设置样式
+  - `tool_button.icon_only()  # 设置为仅图标样式`
+  - `tool_button.text_only()  # 设置为仅文本样式`
+  - `tool_button.text_beside_icon()  # 设置为文本在图标旁边样式`![img_46.png](img_46.png)
+  - `tool_button.text_under_icon()  # 设置为文本在图标下方样式`![img_49.png](img_49.png)
+******
+## 设置按钮提示
+  - `tool_button.setToolTip("提示")`![img_48.png](img_48.png)
+******
+## 设置启用/禁用状态
+  - `tool_button.setEnabled(False)`![img_47.png](img_47.png)
+******
+## 设置可选中
+  - `tool_button.setCheckable(True)`![img_50.png](img_50.png)
+******
+## 示例代码
+
+```python
 import asyncio
 from PySide2.QtWidgets import QWidget, QApplication, QVBoxLayout, QHBoxLayout
 from qasync import QEventLoop
