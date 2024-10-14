@@ -14,6 +14,13 @@ MCheckBoxGroup 是一个自定义的复选框组组件，支持水平或垂直�
         ]
     check_box_group.set_button_list(self.app_data)
     ```
+    ![img_57.png](img_57.png)
+  - ```python
+    self.data_list = ["北京", "上海", "广州", "深圳", "郑州", "石家庄"]
+    # 设置选项
+    check_box_group.set_button_list(self.data_list)
+    ```
+    ![img_58.png](img_58.png)
 ********
 ## 添加选项
   - ```python
