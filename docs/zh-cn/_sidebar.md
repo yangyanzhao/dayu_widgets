@@ -30,6 +30,7 @@
         * [MCascader 级联选择](/cascader.md)
         * [MLineEdit](/zh-cn/line_edit.md)
         * [MRadioButton](/zh-cn/radio_button.md)
+        * [MRadioButtonGroup](/zh-cn/radio_button_group.md)
         * [MSwitch 开关](/zh-cn/swtich.md)
         * [MSlider](/zh-cn/slider.md)
         * [MSpinBox](/zh-cn/spin_box.md)
