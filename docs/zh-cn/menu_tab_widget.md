@@ -1,6 +1,7 @@
-![img_52.png](img_52.png)
 ## 简介
 `MMenuTabWidget` 是一个自定义的导航菜单组件，用于显示一组可切换的选项卡或菜单项。它支持水平和垂直布局，并提供了添加菜单项、设置大小等功能。
+
+![img_52.png](img_52.png)
 ******
 ## 初始化
   - `menu_tab_widget = MMenuTabWidget(orientation=QtCore.Qt.Horizontal)  # orientation导航组件方向`

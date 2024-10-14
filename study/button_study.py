@@ -64,13 +64,13 @@ class DemoWidget(QWidget):
         # 按钮组
         self.sub_layout_6 = QHBoxLayout()
         self.main_layout.addLayout(self.sub_layout_6)
-        button_group_h = MPushButtonGroup()
-        button_group_h.set_button_list([
+        button_group = MPushButtonGroup()
+        button_group.set_button_list([
             {"text": "按钮1", "icon": MIcon("cloud_line.svg", "#EE00EE"), 'type': MPushButton.DangerType, 'clicked': lambda: print("clicked")},
             {"text": "按钮1", "icon": MIcon("cloud_line.svg", "#fff"), 'type': MPushButton.DangerType, 'clicked': lambda: print("clicked")},
             {"text": "按钮1", "icon": MIcon("cloud_line.svg", "#ddd"), 'type': MPushButton.DangerType, 'clicked': lambda: print("clicked")},
         ])
-        self.sub_layout_6.addWidget(button_group_h)
+        self.sub_layout_6.addWidget(button_group)
         self.sub_layout_6.addStretch()
         self.main_layout.addStretch()
 

@@ -39,6 +39,17 @@
 ## 组合使用
   - `MPushButton("删除按钮", MIcon("trash_line.svg", "#ddd")).danger().medium()`![img_11.png](img_11.png)
 ******
+## 按钮组
+  - ```python
+    button_group = MPushButtonGroup()
+    button_group.set_button_list([
+            {"text": "按钮1", "icon": MIcon("cloud_line.svg", "#EE00EE"), 'type': MPushButton.DangerType, 'clicked': lambda: print("clicked")},
+            {"text": "按钮1", "icon": MIcon("cloud_line.svg", "#fff"), 'type': MPushButton.DangerType, 'clicked': lambda: print("clicked")},
+            {"text": "按钮1", "icon": MIcon("cloud_line.svg", "#ddd"), 'type': MPushButton.DangerType, 'clicked': lambda: print("clicked")},
+        ])
+    ```
+    ![img_54.png](img_54.png)
+********
 ## 示例代码
 
 ```python

@@ -31,11 +31,11 @@ class CheckBoxExample(QtWidgets.QWidget, MFieldMixin):
         grid_lay = QtWidgets.QGridLayout()
 
         for index, (text, state) in enumerate(
-            [
-                ("Unchecked", QtCore.Qt.Unchecked),
-                ("Checked", QtCore.Qt.Checked),
-                ("Partially", QtCore.Qt.PartiallyChecked),
-            ]
+                [
+                    ("Unchecked", QtCore.Qt.Unchecked),
+                    ("Checked", QtCore.Qt.Checked),
+                    ("Partially", QtCore.Qt.PartiallyChecked),
+                ]
         ):
             check_box_normal = MCheckBox(text)
             check_box_normal.setCheckState(state)
@@ -63,12 +63,13 @@ class CheckBoxExample(QtWidgets.QWidget, MFieldMixin):
         button.clicked.connect(
             lambda: self.set_field("checked", not self.field("checked"))
         )
-        self.register_field("checked", True)
-        self.register_field(
-            "checked_text", lambda: "Yes!" if self.field("checked") else "No!!"
-        )
-        self.bind("checked", check_box_bind, "checked", signal="stateChanged")
-        self.bind("checked_text", label, "text")
+        # 双向绑定
+        self.register_field(name="checked", getter=True)
+        self.bind(data_name="checked", widget=check_box_bind,
+                  qt_property="checked", signal="stateChanged")
+        # 计算属性
+        self.register_field(name="checked_text", getter=lambda: "Yes!" if self.field("checked") else "No!!")
+        self.bind(data_name="checked_text", widget=label, qt_property="text")
 
         main_lay = QtWidgets.QVBoxLayout()
         main_lay.addWidget(MDivider("Basic"))

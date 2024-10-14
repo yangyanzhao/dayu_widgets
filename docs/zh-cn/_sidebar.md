@@ -13,6 +13,7 @@
         * [MPixmap](/zh-cn/pixmap.md)
         * [MPushButton](/zh-cn/push_button.md)
         * [MToolButton 按钮](/zh-cn/tool_button.md)
+        * [MFieldMixin 双向绑定和计算属性](/zh-cn/field_mixin.md)
 
     * 布局
         * [MFlowLayout 浮动布局](/zh-cn/flow_layou.md)
@@ -25,6 +26,7 @@
 
     * 数据录入
         * [MCheckbox](/zh-cn/check_box.md)
+        * [MCheckBoxGroup](/zh-cn/check_box_group.md)
         * [MCascader 级联选择](/cascader.md)
         * [MLineEdit](/zh-cn/line_edit.md)
         * [MRadioButton](/zh-cn/radio_button.md)
