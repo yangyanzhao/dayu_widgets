@@ -1,38 +1,14 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-###################################################################
-# Author: Mu yanru
-# Date  : 2019.2
-# Email : muyanru345@163.com
-###################################################################
-
-# Import future modules
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-
-# Import built-in modules
-import itertools
 import random
-
-# Import third-party modules
 from Qt import QtWidgets
-
-# Import local modules
-from dayu_widgets import dayu_theme
 from dayu_widgets.combo_box import MComboBox
 from dayu_widgets.divider import MDivider
 from dayu_widgets.field_mixin import MFieldMixin
 from dayu_widgets.label import MLabel
 from dayu_widgets.menu import MMenu
-
-
 class ComboBoxExample(QtWidgets.QWidget, MFieldMixin):
     def __init__(self, parent=None):
         super(ComboBoxExample, self).__init__(parent)
         self._init_ui()
-
     def _init_ui(self):
         cities = ["北京", "上海", "广州", "深圳"]
         self.register_field("button1_selected", "北京")

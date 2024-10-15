@@ -14,12 +14,11 @@ class DemoWidget(QWidget, MFieldMixin):
         self.main_layout = QVBoxLayout()
         self.setLayout(self.main_layout)
 
-        # 创建一个 MComboBox 实例
         combo_box = MComboBox()
-        cities = ["北京", "上海", "广州", "深圳"]
-        menu = MMenu(parent=self, exclusive=False)
-        menu.set_data(cities)
-        combo_box.set_menu(menu)
+        cities = ["上海", "北京", "深圳", "重庆", "广州", '成都', '天津', '武汉', '东莞', '西安', '杭州', '佛山',
+                  '南京', '沈阳', '青岛', '济南', '长沙', '哈尔滨', '郑州', '昆明', '大连']
+        combo_box.addItems(cities)
+        combo_box.setProperty("searchable", True)
         # 添加选项
         self.main_layout.addWidget(combo_box)
 
