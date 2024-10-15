@@ -40,11 +40,13 @@ class MPushButton(QtWidgets.QPushButton):
     WarningType = "warning"
     DangerType = "danger"
 
-    def __init__(self, text="", icon=None, parent=None):
+    def __init__(self, text="", icon=None, parent=None, clicked=None):
         if icon is None:
             super(MPushButton, self).__init__(text=text, parent=parent)
         else:
             super(MPushButton, self).__init__(icon=icon, text=text, parent=parent)
+        if clicked:
+            self.clicked.connect(clicked)
         self._dayu_type = MPushButton.DefaultType
         self._dayu_size = dayu_theme.default_size
 
