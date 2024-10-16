@@ -31,7 +31,7 @@
         * [MLineEdit](/zh-cn/line_edit.md)
         * [MRadioButton](/zh-cn/radio_button.md)
         * [MRadioButtonGroup](/zh-cn/radio_button_group.md)
-        * [MSwitch 开关](/zh-cn/swtich.md)
+        * [MSwitch 开关](/zh-cn/switch.md)
         * [MComboBox](/zh-cn/combo_box.md)
         * [MMenu 菜单](/zh-cn/menu.md)
         * [MSlider](/zh-cn/slider.md)

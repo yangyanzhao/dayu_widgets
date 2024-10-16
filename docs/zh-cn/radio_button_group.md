@@ -1,5 +1,7 @@
 ## 简介
 `MRadioButtonGroup` 用于创建一组互斥的单选按钮。当某个按钮被选中时，会触发 sig_checked_changed 信号。
+
+![img_94.png](img_94.png)
 ******
 ## 初始化
   - `radio_button_group=MRadioButtonGroup(orientation=QtCore.Qt.Horizontal)`

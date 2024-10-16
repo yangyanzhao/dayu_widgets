@@ -67,3 +67,4 @@ if __name__ == '__main__':
     # 显示窗口
     demo_widget.show()
     loop.run_forever()
+```

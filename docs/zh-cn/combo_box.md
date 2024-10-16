@@ -1,5 +1,7 @@
 ## 简介
 `MComboBox` 是一个增强版的 `QComboBox` 组件，提供了多种功能，包括搜索功能、自定义显示格式、多种尺寸以及与自定义菜单的集成
+
+![img_95.png](img_95.png)
 ******
 ## 初始化
   - `combo_box = MComboBox()`
@@ -22,9 +24,12 @@
     menu.set_data(cities)
     combo_box.set_menu(menu)
     ```
+    ![img_96.png](img_96.png)
 ******
 ## 集成`MMenu`菜单(支持多选)
   - `menu = MMenu(parent=self, exclusive=False)`
+
+    ![img_97.png](img_97.png)
 ******
 ## 集成`MMenu`菜单(动态选项)
   - ```python
@@ -75,6 +80,8 @@
     menu.set_data(a)
     combo_box.set_formatter(lambda x: " / ".join(x))  # 设置级联显示格式
     combo_box.set_menu(menu)
+    ```
+    ![img_98.png](img_98.png)
 ******
 ## 集成`MMenu`菜单(自定义显示)
   - ```python
@@ -86,6 +93,7 @@
     combo_box.set_formatter(lambda x: " & ".join(x))  # 设置级联显示格式
     combo_box.set_menu(menu)
     ```
+    ![img_99.png](img_99.png)
 ******
 ## 搜索功能
   - ```python
@@ -95,6 +103,7 @@
     combo_box.addItems(cities)
     combo_box.setProperty("searchable", True)
     ```
+    ![img_100.png](img_100.png)
 ******
 ## 示例代码
 
