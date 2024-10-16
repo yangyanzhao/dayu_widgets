@@ -74,7 +74,7 @@ class MenuExample(QtWidgets.QWidget, MFieldMixin):
             "button4_selected_text", lambda: " / ".join(self.field("button4_selected"))
         )
         button4 = MPushButton(text="级联选择")
-        menu4 = MMenu(cascader=True, parent=self)
+        menu4 = MMenu(exclusive=True, cascader=True, title="", parent=self)
         menu4.set_data(
             ["北京/故宫", "北京/天坛", "北京/王府井", "江苏/南京/夫子庙", "江苏/苏州/拙政园", "江苏/苏州/狮子林"]
         )
@@ -102,9 +102,10 @@ class MenuExample(QtWidgets.QWidget, MFieldMixin):
         menu = MMenu(parent=self)
         items = ["北京", "上海", "广州", "深圳", "北戴河", "BBC/data", "BBC/hello", "American"]
         menu.set_data(items)
-        menu.setProperty("max_scroll_count", 3)
-        menu.setProperty("scrollable", True)
-        menu.setProperty("searchable", True)
+        menu.addAction(MIcon("cloud_fill.svg"), "位置")
+        menu.setProperty("max_scroll_count", 1)  # 设置触发滚动菜单的行数
+        menu.setProperty("scrollable", True)  # 开启滚动菜单
+        menu.setProperty("searchable", True)  # 开启搜索菜单
         button.setMenu(menu)
         sub_lay5.addWidget(button)
 
@@ -143,7 +144,7 @@ class MenuExample(QtWidgets.QWidget, MFieldMixin):
 if __name__ == "__main__":
     # Import local modules
     from dayu_widgets import dayu_theme
-    from dayu_widgets.qt import application
+    from dayu_widgets.qt import application, MIcon
 
     with application() as app:
         test = MenuExample()

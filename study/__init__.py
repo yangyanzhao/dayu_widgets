@@ -7,7 +7,7 @@ def list_files(directory):
         for index, file in enumerate(files):
             # 打印文件的完整路径
             text = fr"https://raw.githubusercontent.com/yangyanzhao/dayu_widgets/refs/heads/master/screenshots/{file}"
-            t = fr"![screenshots/alert_dark.png]({text})"
+            t = fr"![{file}]({file})"
             print(t)
             index += 1
             if index % 2 == 0:
@@ -16,4 +16,7 @@ def list_files(directory):
 
 # 示例目录
 directory = r'D:\pythonwork\dayu_widgets\screenshots'
-list_files(directory)
+# list_files(directory)
+
+if __name__ == '__main__':
+    print(" / ".join(["1", "2", "3"]))

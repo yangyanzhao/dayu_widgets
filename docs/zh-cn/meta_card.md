@@ -1,3 +1,27 @@
+## 简介
+`MMeta` 用于创建元数据（metadata）卡片式用户界面元素。它支持封面图片、头像、标题、描述和额外的操作按钮。此组件适用于多种 UI 场景，如展示列表项或卡片式布局中的信息。
+![img_112.png](img_112.png)
+![img_111.png](img_111.png)
+******
+## 初始化
+  - `meta_card = MMeta(extra=False)  # 是否显示额外操作按钮extra`
+********
+## 设置卡片的数据
+  - ```python
+    meta_card.setup_data({
+            'cover': MPixmap("app-houdini.png"),  # 封面图片路径
+            'avatar': MPixmap("user_line.svg"),  # 头像图片路径
+            'title': 'Houdini',  # 标题文本
+            'description': 'Side Effects Software的旗舰级产品，是创建高级视觉效果的有效工具',  # 描述文本
+    })
+******
+## 获取额外操作按钮的引用
+  - `more_btn = meta_card.get_more_button()`
+******
+
+## 示例代码
+
+```python
 from Qt import QtWidgets
 from dayu_widgets.card import MCard
 from dayu_widgets.card import MMeta
@@ -126,3 +150,4 @@ if __name__ == "__main__":
         test = CardExample()
         dayu_theme.apply(test)
         test.show()
+```

@@ -47,6 +47,7 @@
         * [MBadge 徽标](/zh-cn/badge.md)
         * [MCarousel 走马灯](/zh-cn/carousel.md)
         * [MCard 卡片](/zh-cn/card.md)
+        * [MMeta 卡片](/zh-cn/meta_card.md)
         * [MCollapse 折叠面板](/zh-cn/collapse.md)
         * [MLineTabWidget 下划线式 TabBar](/zh-cn/line_tab.md)
         * [Tag 标签](/zh-cn/tag.md)
