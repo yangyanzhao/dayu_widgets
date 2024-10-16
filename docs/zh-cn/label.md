@@ -10,6 +10,9 @@
   - `MLabel("Hello,World!").h3()`![img_17.png](img_17.png)
   - `MLabel("Hello,World!").h4()`![img_18.png](img_18.png)
 ********
+## 文字自动换行
+  - `label.setWordWrap(True)`
+********
 ## 类型
   - `MLabel("Hello,World!").secondary()`![img_19.png](img_19.png)
   - `MLabel("Hello,World!").warning()`![img_20.png](img_20.png)

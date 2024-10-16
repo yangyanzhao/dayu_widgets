@@ -8,12 +8,10 @@ from __future__ import print_function
 import os
 import sys
 
-
 DEFAULT_STATIC_FOLDER = os.path.join(sys.modules[__name__].__path__[0], "static")
 CUSTOM_STATIC_FOLDERS = []
 # Import local modules
 from dayu_widgets.theme import MTheme
-
 
 dayu_theme = MTheme("dark", primary_color=MTheme.orange)
 # dayu_theme.default_size = dayu_theme.small
@@ -76,7 +74,9 @@ from dayu_widgets.tab_widget import MTabWidget
 from dayu_widgets.text_edit import MTextEdit
 from dayu_widgets.toast import MToast
 from dayu_widgets.tool_button import MToolButton
-
+from dayu_widgets.checkable_tag import MCheckableTag
+from dayu_widgets.new_tag import MNewTag
+from dayu_widgets.tag import MTag
 
 __all__ = [
     "MAlert",
@@ -135,4 +135,7 @@ __all__ = [
     "MTextEdit",
     "MToast",
     "MToolButton",
+    "MNewTag",
+    "MCheckableTag",
+    "MTag",
 ]
