@@ -1,24 +1,51 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-###################################################################
-# Author: Mu yanru
-# Date  : 2019.2
-# Email : muyanru345@163.com
-###################################################################
+## 简介
+`MProgressCircle` 是一个基于 `QtWidgets.QProgressBar` 的自定义圆形进度条组件，适用于需要显示操作完成百分比的场景。该组件支持设置宽度、颜色和仪表盘样式，并且可以自定义内部显示的控件。
 
-# Import future modules
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+![img_131.png](img_131.png)
+******
+## 初始化
+  - `progress_circle = MProgressCircle(dashboard=False, parent=None)`
+    - `dashboard: 是否使用仪表盘样式，默认为 False。`
+********
+## 设置宽度
+  - `progress_circle.set_dayu_width(100)`
+******
+## 设置颜色
+  - `progress_circle.set_dayu_color("#FF5722")`
+******
+## 设置内部控件
+  - ```python
+    label = MLabel("50%").h3()
+    progress_circle.set_widget(label)
+    ```
+******
+## 仪表盘样式
+  - `dashboard_circle = MProgressCircle.dashboard(parent=None)`
+******
+## 属性
+  - `dayu_width: 当前宽度的属性`
+  - `dayu_color: 当前颜色的属性`
+******
+## 信号
+  - `valueChanged: 进度值发生变化时发出的信号。`
+******
+## 双向绑定
+  - ```python
+    circle = MProgressCircle(parent=self)
+    self.register_field("percent", 0)
+    self.register_field("color", self.get_color)
+    self.register_field("format", self.get_format)  
+    self.bind("percent", circle, "value")
+    self.bind("color", circle, "dayu_color")
+    self.bind("format", circle, "format")
+    ```
+******
+## 示例代码
 
-# Import built-in modules
+```python
 import functools
-
-# Import third-party modules
 from Qt import QtCore
 from Qt import QtWidgets
-
-# Import local modules
 from dayu_widgets import dayu_theme
 from dayu_widgets.button_group import MPushButtonGroup
 from dayu_widgets.divider import MDivider
@@ -27,14 +54,11 @@ from dayu_widgets.label import MLabel
 from dayu_widgets.progress_circle import MProgressCircle
 from dayu_widgets.push_button import MPushButton
 from dayu_widgets.qt import get_scale_factor
-
-
 class ProgressCircleExample(QtWidgets.QWidget, MFieldMixin):
     def __init__(self, parent=None):
         super(ProgressCircleExample, self).__init__(parent)
         self.setWindowTitle("Examples for MProgressCircle")
         self._init_ui()
-
     def _init_ui(self):
         main_lay = QtWidgets.QVBoxLayout()
         self.setLayout(main_lay)
@@ -143,7 +167,6 @@ class ProgressCircleExample(QtWidgets.QWidget, MFieldMixin):
         main_lay.addWidget(MDivider("custom circle"))
         main_lay.addWidget(custom_circle)
         main_lay.addStretch()
-
     def get_color(self):
         p = self.field("percent")
         if p < 30:
@@ -153,7 +176,6 @@ class ProgressCircleExample(QtWidgets.QWidget, MFieldMixin):
         if p < 100:
             return dayu_theme.primary_color
         return dayu_theme.success_color
-
     def get_format(self):
         p = self.field("percent")
         if p < 30:
@@ -163,17 +185,13 @@ class ProgressCircleExample(QtWidgets.QWidget, MFieldMixin):
         if p < 100:
             return "^_^"
         return "^o^"
-
     def slot_change_percent(self, value):
         self.set_field("percent", max(0, min(self.field("percent") + value, 100)))
-
-
 if __name__ == "__main__":
-    # Import local modules
     from dayu_widgets import dayu_theme
     from dayu_widgets.qt import application
-
     with application() as app:
         test = ProgressCircleExample()
         dayu_theme.apply(test)
         test.show()
+```

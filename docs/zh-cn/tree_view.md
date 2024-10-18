@@ -1,15 +1,11 @@
 ## 简介
-`MTableView` 是一个基于 `QtWidgets.QTableView` 的自定义表格视图类，用于展示数据，并提供了丰富的功能如上下文菜单、无数据时的自定义显示、列头状态保存与加载等。
+`MTreeView` 是一个基于 `QtWidgets.QTreeView` 的自定义树类表格视图类，用于展示数据，并提供了丰富的功能如上下文菜单、无数据时的自定义显示、列头状态保存与加载等。
 
-![img_121.png](img_121.png)
+![img_122.png](img_122.png)
 ******
 ## 初始化
-  - `table_view = MTableView(size=dayu_theme.small, show_row_count=True)`
-    - `size`表格大小，可选值为 `dayu_theme.small`, `dayu_theme.medium`, `dayu_theme.large`。
-    - `show_row_count`是否显示行号
+  - `tree_view = MTreeView()`
 ********
-## 是否显示网格线
-  - `table_view.setShowGrid(True)`
 ## 模拟数据
   - ```python
     def score_color(score, y):
@@ -100,57 +96,59 @@
             },
         ]
 
-    data_list = [
-            {
-                "name": "John Brown",
-                "sex": "Male",
-                "sex_list": ["Male", "Female"],
-                "age": 18,
-                "score": 89,
-                "city": "New York",
-                "city_list": ["New York", "Ottawa", "London", "Sydney"],
-                "date": "2016-10-03",
-            },
-            {
-                "name": "Jim Green",
-                "sex": "Male",
-                "sex_list": ["Male", "Female"],
-                "age": 24,
-                "score": 55,
-                "city": "London",
-                "city_list": ["New York", "Ottawa", "London", "Sydney"],
-                "date": "2016-10-01",
-            },
-            {
-                "name": "Zhang Xiaoming",
-                "sex": "Male",
-                "sex_list": ["Male", "Female"],
-                "age": 30,
-                "score": 70,
-                "city": "",
-                "city_list": ["Beijing", "Shanghai", "Shenzhen", "Guangzhou"],
-                "date": "2016-10-02",
-            },
-            {
-                "name": "Jon Snow",
-                "sex": "Female",
-                "sex_list": ["Male", "Female"],
-                "age": 26,
-                "score": 60,
-                "city": "Ottawa",
-                "city_list": ["New York", "Ottawa", "London", "Sydney"],
-                "date": "2016-10-04",
-            },
-            {
-                "name": "Li Xiaohua",
-                "sex": "Female",
-                "sex_list": ["Male", "Female"],
-                "age": 18,
-                "score": 97,
-                "city": "Ottawa",
-                "city_list": ["New York", "Ottawa", "London", "Sydney"],
-                "date": "2016-10-04",
-            },
+    tree_data_list = [
+              {
+                  "name": "John Brown",
+                  "sex": "Male",
+                  "sex_list": ["Male", "Female"],
+                  "age": 18,
+                  "score": 89,
+                  "city": "New York",
+                  "city_list": ["New York", "Ottawa", "London", "Sydney"],
+                  "date": "2016-10-03",
+                  "children": [
+                      {
+                          "name": "Jim Green",
+                          "sex": "Male",
+                          "sex_list": ["Male", "Female"],
+                          "age": 24,
+                          "score": 55,
+                          "city": "London",
+                          "city_list": ["New York", "Ottawa", "London", "Sydney"],
+                          "date": "2016-10-01",
+                      },
+                      {
+                          "name": "Zhang Xiaoming",
+                          "sex": "Male",
+                          "sex_list": ["Male", "Female"],
+                          "age": 30,
+                          "score": 70,
+                          "city": "",
+                          "city_list": ["Beijing", "Shanghai", "Shenzhen", "Guangzhou"],
+                          "date": "2016-10-02",
+                      },
+                  ],
+              },
+              {
+                  "name": "Jon Snow",
+                  "sex": "Female",
+                  "sex_list": ["Male", "Female"],
+                  "age": 26,
+                  "score": 60,
+                  "city": "Ottawa",
+                  "city_list": ["New York", "Ottawa", "London", "Sydney"],
+                  "date": "2016-10-04",
+              },
+              {
+                  "name": "Li Xiaohua",
+                  "sex": "Female",
+                  "sex_list": ["Male", "Female"],
+                  "age": 18,
+                  "score": 97,
+                  "city": "Ottawa",
+                  "city_list": ["New York", "Ottawa", "London", "Sydney"],
+                  "date": "2016-10-04",
+              },
         ]
     ```
 ******
@@ -159,7 +157,7 @@
     data_list = [...]
     model = MTableModel()
     model.set_header_list(header_list)
-    model.set_data_list(data_list)
+    model.set_data_list(tree_data_list)
     ```
 ******
 ## 构建排序模型
@@ -173,10 +171,9 @@
 ## 构建表格
   - ```python
     # 构建表格
-    table_view = MTableView(size=dayu_theme.small, show_row_count=True)
+    table_view = MTreeView()
     table_view.setModel(self.model_sort)
     table_view.set_header_list(header_list)
-    table_view.setShowGrid(True)
     ```
 ******
 ## 搜索功能
@@ -186,14 +183,22 @@
     line_edit.textChanged.connect(self.model_sort.set_search_pattern)
     ```
 ******
+## 收起/展开功能
+  - ```python
+    expand_all_button = MPushButton("Expand All").small()
+    expand_all_button.clicked.connect(tree_view.expandAll)
+    collapse_all_button = MPushButton("Collapse All").small()
+    collapse_all_button.clicked.connect(tree_view.collapseAll)
+    ```
+******
 ## 示例代码
 
 ```python
 import asyncio
-from PySide2.QtWidgets import QWidget, QApplication, QVBoxLayout
+from PySide2.QtWidgets import QWidget, QApplication, QVBoxLayout, QHBoxLayout
 from qasync import QEventLoop
 from dayu_widgets import MTheme, MFieldMixin, dayu_theme, MTableModel, MSortFilterModel, MLineEdit, \
-    MTableView
+    MTableView, MPushButton, MTreeView
 class DemoWidget(QWidget, MFieldMixin):
     def __init__(self, parent=None):
         super(DemoWidget, self).__init__(parent)
@@ -285,7 +290,7 @@ class DemoWidget(QWidget, MFieldMixin):
                 "color": '#eaa'
             },
         ]
-        data_list = [
+        tree_data_list = [
             {
                 "name": "John Brown",
                 "sex": "Male",
@@ -295,26 +300,28 @@ class DemoWidget(QWidget, MFieldMixin):
                 "city": "New York",
                 "city_list": ["New York", "Ottawa", "London", "Sydney"],
                 "date": "2016-10-03",
-            },
-            {
-                "name": "Jim Green",
-                "sex": "Male",
-                "sex_list": ["Male", "Female"],
-                "age": 24,
-                "score": 55,
-                "city": "London",
-                "city_list": ["New York", "Ottawa", "London", "Sydney"],
-                "date": "2016-10-01",
-            },
-            {
-                "name": "Zhang Xiaoming",
-                "sex": "Male",
-                "sex_list": ["Male", "Female"],
-                "age": 30,
-                "score": 70,
-                "city": "",
-                "city_list": ["Beijing", "Shanghai", "Shenzhen", "Guangzhou"],
-                "date": "2016-10-02",
+                "children": [
+                    {
+                        "name": "Jim Green",
+                        "sex": "Male",
+                        "sex_list": ["Male", "Female"],
+                        "age": 24,
+                        "score": 55,
+                        "city": "London",
+                        "city_list": ["New York", "Ottawa", "London", "Sydney"],
+                        "date": "2016-10-01",
+                    },
+                    {
+                        "name": "Zhang Xiaoming",
+                        "sex": "Male",
+                        "sex_list": ["Male", "Female"],
+                        "age": 30,
+                        "score": 70,
+                        "city": "",
+                        "city_list": ["Beijing", "Shanghai", "Shenzhen", "Guangzhou"],
+                        "date": "2016-10-02",
+                    },
+                ],
             },
             {
                 "name": "Jon Snow",
@@ -340,25 +347,33 @@ class DemoWidget(QWidget, MFieldMixin):
         # 构建数据模型
         model = MTableModel()
         model.set_header_list(header_list)
-        model.set_data_list(data_list)
-
+        model.set_data_list(tree_data_list)
         # 构建排序模型
-        self.model_sort = MSortFilterModel()
-        self.model_sort.setSourceModel(model)
-        self.model_sort.set_header_list(header_list)
+        model_sort = MSortFilterModel()
+        model_sort.setSourceModel(model)
+        model_sort.set_header_list(header_list)
 
-        # 构建表格
-        table_view = MTableView(size=dayu_theme.small, show_row_count=True)
-        table_view.setModel(self.model_sort)
-        table_view.set_header_list(header_list)
-        table_view.setShowGrid(True)
+        tree_view = MTreeView()
+        tree_view.setModel(model_sort)
+        tree_view.set_header_list(header_list)
 
         # 搜索栏
         line_edit = MLineEdit().search().small()
-        line_edit.textChanged.connect(self.model_sort.set_search_pattern)
+        line_edit.textChanged.connect(model_sort.set_search_pattern)
 
-        layout.addWidget(line_edit)
-        layout.addWidget(table_view)
+        expand_all_button = MPushButton("Expand All").small()
+        expand_all_button.clicked.connect(tree_view.expandAll)
+        collapse_all_button = MPushButton("Collapse All").small()
+        collapse_all_button.clicked.connect(tree_view.collapseAll)
+        button_lay = QHBoxLayout()
+        button_lay.addWidget(expand_all_button)
+        button_lay.addWidget(collapse_all_button)
+        button_lay.addWidget(line_edit)
+        button_lay.addStretch()
+
+        layout.addLayout(button_lay)
+        layout.addWidget(tree_view)
+
         layout.addStretch()
 if __name__ == '__main__':
     # 创建主循环

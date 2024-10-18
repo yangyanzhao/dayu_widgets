@@ -33,15 +33,16 @@ class TreeViewExample(QtWidgets.QWidget, MFieldMixin):
     def _init_ui(self):
         model_1 = MTableModel()
         model_1.set_header_list(mock.header_list)
+        model_1.set_data_list(mock.tree_data_list)
+
         model_sort = MSortFilterModel()
         model_sort.setSourceModel(model_1)
+        model_sort.set_header_list(mock.header_list)
 
         tree_view = MTreeView()
         tree_view.setModel(model_sort)
-
-        model_sort.set_header_list(mock.header_list)
         tree_view.set_header_list(mock.header_list)
-        model_1.set_data_list(mock.tree_data_list)
+
 
         line_edit = MLineEdit().search().small()
         line_edit.textChanged.connect(model_sort.set_search_pattern)
