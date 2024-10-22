@@ -38,6 +38,13 @@
     # 将数据绑定到UI控件上，当数据发生改变，则更新UI,并触发callback回调函数。不需要设置signal，因为是单向的，计算属性是自动更新的。
     self.bind(data_name="Computed", widget=self.edit_computed, qt_property="text", callback=lambda: print("触发回调函数1"))
 ******
+## 获取控件的所有的属性
+  - ```python
+        self.line_edit = MLineEdit().search().small()
+        count = self.line_edit.metaObject().propertyCount()
+        for i in range(count):
+            print(self.line_edit.metaObject().property(i).name())
+    ```
 ## 示例代码
 
 ```python
