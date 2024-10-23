@@ -40,7 +40,7 @@
       ```
 ********
 ## MLoadingWrapper包装器
-  - 注意触发Loading的槽函数需采用异步，使用`@asyncSlot()`装饰器来修饰。否则会阻塞主线程。
+  - 注意触发Loading的槽函数需采用异步，使用`@asyncSlot()`装饰器来修饰。否则会阻塞主线程。`set_dayu_loading(True)`和`set_dayu_loading(False)`之间的耗时操作也要采用异步,否则动画无法显示。
     - ```python
         @asyncSlot()
         async def config(self):
