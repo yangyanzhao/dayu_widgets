@@ -38,6 +38,16 @@
     - ```python
       is_loading = wrapper.dayu_loading # 获取当前是否正在加载
       ```
+********
+## MLoadingWrapper包装器
+  - 注意触发Loading的槽函数需采用异步，使用`@asyncSlot()`装饰器来修饰。否则会阻塞主线程。
+    - ```python
+        @asyncSlot()
+        async def config(self):
+          self.loading_wrapper.set_dayu_loading(True)
+          await asyncio.sleep(3)
+          self.loading_wrapper.set_dayu_loading(False)
+```
 ## 示例代码
 ```python
 import asyncio
