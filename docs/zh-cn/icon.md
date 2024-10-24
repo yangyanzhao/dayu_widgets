@@ -2,11 +2,16 @@
 `MIcon` 是一个用于高效加载和管理图标的工具类，支持 SVG 和其他常见图标格式。通过缓存机制减少重复加载相同图标时的性能开销，并且可以自定义图标的颜色。
 ******
 ## 基础图标
-  - `MIcon('path/to/icon.svg')`![img_12.png](img_12.png)
+  - `MIcon('icon.svg')`![img_12.png](img_12.png)
 ********
 ## 自定义颜色
-  - `MIcon('path/to/icon.svg', color='#FF0000')`![img_13.png](img_13.png)
+  - `MIcon('icon.svg', color='#FF0000')`![img_13.png](img_13.png)
 ******
+## 自定义图标
+  - [阿里巴巴适量图标库](https://www.iconfont.cn/)
+  - ![img_134.png](img_134.png)
+  - 下载后，为了使他的颜色能够动态受控，需要将图标文件保存为SVG格式，并添加一个`<defs><style type="text/css"></style></defs>`标签，将颜色设置为`fill="#555555"`。
+  - ![img_135.png](img_135.png)
 ## 示例代码
 
 ```python
