@@ -67,6 +67,11 @@
                 print(prop_name)
     ```
 ******
+## 获取控件的属性值
+  - ```python
+    widget.property("属性名称")
+    ```
+******
 ## 获取控件的所有方法和信号（信号在 `Qt` 中被视为一种特殊的方法。）
   - ```python
     button = QPushButton()
@@ -76,6 +81,8 @@
         method = meta_object.method(i)
         if method.methodType() == QMetaMethod.Signal:
             print(f"Signal: {method.name().data().decode()}")
+        elif method_type == QMetaMethod.Method:
+            print(f"Method: {method_name}")
     ```
 ******
 ## 示例代码
