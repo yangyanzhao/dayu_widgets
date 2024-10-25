@@ -45,6 +45,39 @@
         for i in range(count):
             print(self.line_edit.metaObject().property(i).name())
     ```
+******
+## 获取控件的属性（过滤掉一些常见属性）
+  - ```python
+        self.line_edit = MLineEdit().search().small()
+        count = self.line_edit.metaObject().propertyCount()
+        for i in range(count):
+            common_properties = {"objectName", "enabled", "geometry", "size", "pos", "x", "y", "width", "height", "rect",
+                             "sizeHint", "minimumSizeHint", "sizePolicy", "minimumSize", "maximumSize", "minimumWidth",
+                             "minimumHeight", "maximumWidth", "maximumHeight", "focusPolicy", "focus", "updatesEnabled",
+                             "visible", "hidden", "sizeIncrement", "baseSize", "cursor", "mouseTracking",
+                             "isActiveWindow", "underMouse", "isFullScreen", "windowOpacity", "windowModified",
+                             "acceptDrops", "windowTitle", "windowIcon", "windowIconText", "windowFilePath",
+                             "windowFlags", "isTopLevel", "isWindowModified", "isModal", "windowModality", "isEnabled",
+                             "isEnabledTo", "isEnabledToParent", "layoutDirection", "isVisible", "isVisibleTo",
+                             "isVisibleToParent", "isMinimized", "isMaximized", "isSizeGripEnabled",
+                             "autoFillBackground", "styleSheet", "palette", "font", "cursor"}
+            # 过滤掉一些常用属性
+            prop_name = self.line_edit.metaObject().property(i).name()
+            if prop_name not in common_properties:
+                print(prop_name)
+    ```
+******
+## 获取控件的所有方法和信号（信号在 `Qt` 中被视为一种特殊的方法。）
+  - ```python
+    button = QPushButton()
+    meta_object = button.metaObject()
+    count = meta_object.methodCount()
+    for i in range(count):
+        method = meta_object.method(i)
+        if method.methodType() == QMetaMethod.Signal:
+            print(f"Signal: {method.name().data().decode()}")
+    ```
+******
 ## 示例代码
 
 ```python
