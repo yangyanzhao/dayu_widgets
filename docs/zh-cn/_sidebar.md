@@ -14,6 +14,8 @@
         * [MPushButton](/zh-cn/push_button.md)
         * [MToolButton 按钮](/zh-cn/tool_button.md)
         * [MFieldMixin 双向绑定和计算属性](/zh-cn/field_mixin.md)
+        * [TinyDB 单线程 轻量级 数据库](/zh-cn/tiny_db.md)
+        * [MFieldMixin与TinyDB 整合使用](/zh-cn/field_mixin_tiny_db.md)
 
     * 布局
         * [MFlowLayout 浮动布局](/zh-cn/flow_layou.md)
@@ -68,3 +70,4 @@
 
     * 其他
         * [MDivider 分割线](/zh-cn/divider.md)
+        * [MSettingsWidget 配置](/zh-cn/settings.md)
