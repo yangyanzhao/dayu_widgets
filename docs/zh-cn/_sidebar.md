@@ -48,6 +48,7 @@
 
     * 数据展示
         * [MAvatar 头像](/zh-cn/avatar.md)
+        * [CAvatar 头像](/zh-cn/avatar_c.md)
         * [MBadge 徽标](/zh-cn/badge.md)
         * [MCarousel 走马灯](/zh-cn/carousel.md)
         * [MCard 卡片](/zh-cn/card.md)
