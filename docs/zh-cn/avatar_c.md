@@ -279,13 +279,3 @@ if __name__ == '__main__':
  - size: 头像的尺寸，默认为中等尺寸（64x64）。
  - animation: 是否启用旋转动画，默认为不启用。
 ******
-## 设置控件大小
-  - `avatar.huge()  # 设置为巨大尺寸`
-  - `avatar.large()  # 设置为大尺寸`
-  - `avatar.medium()  # 设置为中尺寸`
-  - `avatar.small()  # 设置为小尺寸`
-  - `avatar.tiny()  # 设置为微小尺寸`
-******
-## 双向绑定
-  
-******

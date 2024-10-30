@@ -26,6 +26,7 @@
         * [MBreadcrumb 面包屑](/zh-cn/breadcrumb.md)
         * [MMenuTabWidget 菜单形式的导航栏](/zh-cn/menu_tab_widget.md)
         * [MPage 分页](/zh-cn/page.md)
+        * [CPaginationBar 分页](/zh-cn/pagination_bar.md)
         * [MWizard 步骤](/zh-cn/wizard.md)
 
     * 数据录入
@@ -39,6 +40,8 @@
         * [MComboBox](/zh-cn/combo_box.md)
         * [MMenu 菜单](/zh-cn/menu.md)
         * [MSlider](/zh-cn/slider.md)
+        * [MSlider](/zh-cn/slider.md)
+        * [CSlider.py](/zh-cn/slider_c.md)
         * [MSpinBox](/zh-cn/spin_box.md)
         * [MDoubleSpinBox](/zh-cn/double_spin_box.md)
         * [MDateTimeEdit](/zh-cn/date_time_edit.md)
@@ -62,6 +65,7 @@
         * [MItemViewSet](/zh-cn/item_view_set.md)
         * [MItemViewFullSet](/zh-cn/item_view_full_set.md)
         * [MSequenceFile](/zh-cn/sequence_file.md)
+        * [CCountUp 数字动画](/zh-cn/count_up_c.md)
 
     * 反馈
         * [MAlert 警告提示](/zh-cn/alert.md)
