@@ -78,7 +78,30 @@
         },
     ]
     menu.set_data(a)
-    combo_box.set_formatter(lambda x: " / ".join(x))  # 设置级联显示格式
+    def formatter_show(values):
+        # 这里应该将value转换成label来显示
+        # 递归函数，用于查找匹配的label
+        def find_label(data, value):
+            for item in data:
+                if item["value"] == value:
+                    return item["label"]
+                if "children" in item:
+                    result = find_label(item["children"], value)
+                    if result:
+                        return result
+            return None
+        # 如果是数组，则进行label转换
+        if isinstance(values, list):
+            # 转换b中的value为label
+            labels = [find_label(a, value) for value in values]
+            # 如果存在找不到的控制，就回显原始数据
+            if None in labels:
+                return values
+            return " / ".join(labels)
+        # 如果是字符串，则直接返回
+        if isinstance(values, str):
+            return values
+    combo_box.set_formatter(formatter_show)  # 设置级联显示格式
     combo_box.set_menu(menu)
     ```
     ![img_98.png](img_98.png)

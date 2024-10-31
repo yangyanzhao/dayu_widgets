@@ -42,7 +42,7 @@ class MenuExample(QtWidgets.QWidget, MFieldMixin):
 
         self.bind("button1_selected", menu1, "value", signal="sig_value_changed")
         self.bind("button1_selected_text", label1, "text")
-
+        menu1.set_value("北京")
         self.register_field("button2_selected", ["北京"])
         self.register_field(
             "button2_selected_text", lambda: ", ".join(self.field("button2_selected"))

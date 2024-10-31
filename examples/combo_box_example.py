@@ -5,10 +5,13 @@ from dayu_widgets.divider import MDivider
 from dayu_widgets.field_mixin import MFieldMixin
 from dayu_widgets.label import MLabel
 from dayu_widgets.menu import MMenu
+
+
 class ComboBoxExample(QtWidgets.QWidget, MFieldMixin):
     def __init__(self, parent=None):
         super(ComboBoxExample, self).__init__(parent)
         self._init_ui()
+
     def _init_ui(self):
         cities = ["北京", "上海", "广州", "深圳"]
         self.register_field("button1_selected", "北京")
@@ -51,59 +54,69 @@ class ComboBoxExample(QtWidgets.QWidget, MFieldMixin):
 
         a = [
             {
-                "children": [
-                    {"value": "\u6545\u5bab", "label": "\u6545\u5bab"},
-                    {"value": "\u5929\u575b", "label": "\u5929\u575b"},
-                    {"value": "\u738b\u5e9c\u4e95", "label": "\u738b\u5e9c\u4e95"},
-                ],
-                "value": "\u5317\u4eac",
-                "label": "\u5317\u4eac",
+                "children": [{"value": "Gugong", "label": "故宫"}, {"value": "Tiantan", "label": "天坛"},
+                             {"value": "Wangfujing", "label": "王府井"}],
+                "value": "Beijing",
+                "label": "北京",
             },
             {
-                "children": [
-                    {"value": "\u6545\u5bab", "label": "\u6545\u5bab"},
-                ],
-                "value": "\u4e1c\u4eac",
-                "label": "\u4e1c\u4eac",
+                "children": [{"value": "Gugong", "label": "故宫"}],
+                "value": "Dongjing",
+                "label": "东京",
             },
             {
                 "children": [
                     {
-                        "children": [
-                            {
-                                "value": "\u592b\u5b50\u5e99",
-                                "label": "\u592b\u5b50\u5e99",
-                            }
-                        ],
-                        "value": "\u5357\u4eac",
-                        "label": "\u5357\u4eac",
+                        "children": [{"value": "Fuzimiao", "label": "夫子庙"}],
+                        "value": "Nanjing",
+                        "label": "南京",
                     },
                     {
-                        "children": [
-                            {
-                                "value": "\u62d9\u653f\u56ed",
-                                "label": "\u62d9\u653f\u56ed",
-                            },
-                            {
-                                "value": "\u72ee\u5b50\u6797",
-                                "label": "\u72ee\u5b50\u6797",
-                            },
-                        ],
-                        "value": "\u82cf\u5dde",
-                        "label": "\u82cf\u5dde",
+                        "children": [{"value": "Zhuozhengyuan", "label": "拙政园"}, {"value": "Shizilin", "label": "狮子林"}],
+                        "value": "Suzhou",
+                        "label": "苏州",
                     },
                 ],
-                "value": "\u6c5f\u82cf",
-                "label": "\u6c5f\u82cf",
+                "value": "Jiangsu",
+                "label": "江苏",
             },
         ]
 
         self.register_field("button4_selected", "")
+
+
+
         menu4 = MMenu(cascader=True, parent=self)
         menu4.set_data(a)
         select4 = MComboBox()
         select4.set_menu(menu4)
-        select4.set_formatter(lambda x: " / ".join(x))
+
+        def formatter_show(values):
+            # 这里应该将value转换成label来显示
+            # 递归函数，用于查找匹配的label
+            pass
+            def find_label(data, value):
+                for item in data:
+                    if item["value"] == value:
+                        return item["label"]
+                    if "children" in item:
+                        result = find_label(item["children"], value)
+                        if result:
+                            return result
+                return None
+
+            if isinstance(values, list):
+                # 转换b中的value为label
+                labels = [find_label(a, value) for value in values]
+                if None in labels:
+                    return values
+                return " / ".join(labels)
+            if isinstance(values, str):
+                return values
+        select4.set_formatter(formatter_show)
+
+
+
         self.bind("button4_selected", select4, "value", signal="sig_value_changed")
         select4.set_value("北京/故宫")
 
