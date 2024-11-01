@@ -61,6 +61,7 @@
         * [Tag 标签](/zh-cn/tag.md)
         * [MListView](/zh-cn/list_view.md)
         * [MTableView](/zh-cn/table_view.md)
+        * [MTableView 增删改查模板](/zh-cn/table_view_crud.md)
         * [MTreeView](/zh-cn/tree_view.md)
         * [MItemViewSet](/zh-cn/item_view_set.md)
         * [MItemViewFullSet](/zh-cn/item_view_full_set.md)

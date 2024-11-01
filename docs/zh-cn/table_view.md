@@ -10,6 +10,34 @@
 ********
 ## 是否显示网格线
   - `table_view.setShowGrid(True)`
+## 设置头
+  ```python
+  setting = {
+        'key': attr,  # 必填，用来读取 model后台数据结构的属性
+        'label': attr.title(),  # 选填，显示在界面的该列的名字
+        'width': 100,  # 选填，单元格默认的宽度
+        'default_filter': False,  # 选填，如果有组合的filter组件，该属性默认是否显示，默认False
+        'searchable': False,  # 选填，如果有搜索组件，该属性是否可以被搜索，默认False
+        'editable': False,  # 选填，该列是否可以双击编辑，默认False
+        'selectable': False,  # 选填，该列是否可以双击编辑，且使用下拉列表选择。该下拉框的选项们，是通过 data 拿数据的
+        'checkable': False,  # 选填，该单元格是否要加checkbox，默认False
+        'exclusive': True,  # 配合selectable，如果是可以多选的则为 False，如果是单选，则为True
+        'order': None,  # 选填，初始化时，该列的排序方式, 0 升序，1 降序
+        # 下面的是每个单元格的设置，主要用来根据本单元格数据，动态设置样式
+        'color': None,  # QColor选填，该单元格文字的颜色，例如根据百分比数据大小，大于100%显示红色，小于100%显示绿色
+        'bg_color': None,  # 选填，该单元格的背景色，例如根据bool数据，True显示绿色，False显示红色
+        'display': None,  # 选填，该单元显示的内容，例如数据是以分钟为单位，可以在这里给转换成按小时为单位
+        'align': None,  # 选填，该单元格文字的对齐方式
+        'font': None,  # 选填，该单元格文字的格式，例如加下划线、加粗等等
+        'icon': None,  # 选填，该单格元的图标，注意，当 QListView 使用图标模式时，每个item的图片也是在这里设置
+        'tooltip': None,  # 选填，鼠标指向该单元格时，显示的提示信息
+        'size': None,  # 选填，该列的 hint size，设置
+        'data': None,
+        'edit': None
+    }
+  ```
+*******
+
 ## 模拟数据
   - ```python
     def score_color(score, y):
