@@ -43,9 +43,9 @@
   - ```python
     button_group = MPushButtonGroup()
     button_group.set_button_list([
-            {"text": "按钮1", "icon": MIcon("cloud_line.svg", "#EE00EE"), 'type': MPushButton.DangerType, 'clicked': lambda: print("clicked")},
-            {"text": "按钮1", "icon": MIcon("cloud_line.svg", "#fff"), 'type': MPushButton.DangerType, 'clicked': lambda: print("clicked")},
-            {"text": "按钮1", "icon": MIcon("cloud_line.svg", "#ddd"), 'type': MPushButton.DangerType, 'clicked': lambda: print("clicked")},
+            {"text": "按钮1", "icon": MIcon("cloud_line.svg", "#EE00EE"), 'dayu_type': MPushButton.DangerType, 'clicked': lambda: print("clicked")},
+            {"text": "按钮1", "icon": MIcon("cloud_line.svg", "#fff"), 'dayu_type': MPushButton.DangerType, 'clicked': lambda: print("clicked")},
+            {"text": "按钮1", "icon": MIcon("cloud_line.svg", "#ddd"), 'dayu_type': MPushButton.DangerType, 'clicked': lambda: print("clicked")},
         ])
     ```
     ![img_54.png](img_54.png)
