@@ -3,6 +3,7 @@
 * [dayu widgets](/zh-cn/README.md)
 * [快速上手](/zh-cn/quick_start.md)
 * [定制主题](/zh-cn/theme.md)
+* [项目脚手架](/zh-cn/framework.md)
 * 组件
 
     * 通用
