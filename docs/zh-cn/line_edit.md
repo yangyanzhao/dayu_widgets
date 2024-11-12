@@ -83,6 +83,13 @@
     ```
     ![img_72.png](img_72.png)
 ******
+## 双向绑定
+  ```python
+    # 数据绑定(账号)
+    self.lineEdit_3.set_delay_duration(millisecond=2000)  # 延迟时间（毫秒
+    widget_bind_value(parent=self, widget=self.lineEdit_3, field_name="login_username",widget_property="text", widget_signal="textChanged")
+  ```
+******
 ## 示例代码
 
 ```python

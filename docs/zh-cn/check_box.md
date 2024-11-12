@@ -30,6 +30,10 @@
     - `check_box.checkState() == QtCore.Qt.Unchecked # 部分选中（三态模式下的中间状态）` 
     - `check_box.checkState() == QtCore.Qt.PartiallyChecked # 完全选中` 
 ******
+## 双向绑定
+  - `widget_bind_value(parent=self, widget=self.checkBox, field_name="login_remember_me", widget_property="checked", widget_signal="toggled") # 二态`
+  - `widget_bind_value(parent=self, widget=self.checkBox, field_name="login_remember_me", widget_property="tristate", widget_signal="stateChanged") # 三态`
+******
 ## 示例代码
 
 ```python
