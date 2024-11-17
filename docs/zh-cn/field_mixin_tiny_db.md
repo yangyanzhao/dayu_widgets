@@ -39,6 +39,8 @@
                     callback=lambda: table_memory.upsert(document={field_name: parent.field(field_name)},
                                                          cond=Query()[field_name].exists()))
 ******
+## 全局数据绑定
+
 ## 示例使用
 
 ```python
