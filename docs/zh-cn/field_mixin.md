@@ -49,7 +49,34 @@ UI，或者在 UI 组件发生变化时自动更新数据。这个类用于构�
               signal="sig_delay_text_changed", callback=lambda: print("触发回调函数"))
 
 ******
+## 双向绑定（全局绑定）
+即，数据绑定跨越多个窗口，在A窗口绑定，在B窗口回写数据。
 
+1.新建一个文件和类，专门用来承载数据
+```python
+from dayu_widgets import MFieldMixin
+
+
+# 作为数据LocalStorage存储类
+
+class DataClass(MFieldMixin):
+    def __init__(self):
+        super(DataClass, self).__init__()
+
+
+data_class = DataClass()
+
+```
+2.在A窗口类中绑定数据
+```python
+data_class.register_field(name='nickname')
+data_class.bind(data_name="nickname", widget=infor_widget_0.q_label_value, qt_property="text")
+```
+3.在B窗口中改变数据。
+```python
+data_class.set_field("nickname", nickname)
+```
+4.这种全局绑定最好设置好前缀，类似于命名空间的概念，防止数据名冲突。
 ## 计算属性（即单向绑定，将计算的数据结果绑定到UI控件，但UI控件的值无法反向绑定到计算属性上）
 
 - ```python
