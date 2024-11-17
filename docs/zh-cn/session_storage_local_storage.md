@@ -1,4 +1,5 @@
 ## 简介
+
 `DataSessionStorage` 和 `DataLocalStorage`
 这一篇特地用来讲一讲数据的双向绑定，旨在让兄弟们可以更好的面向数据编程。这里就涉及到了两件事：1.数据的临时存放和持久化存放，2.数据与空间的双向绑定关系。
 ******
@@ -113,6 +114,15 @@ combo_box.set_menu(menu)
 data_local_storage.widget_bind_value(widget=combo_box, field_name="prompt_menu_select",
                                      widget_property="value", widget_signal="sig_value_changed")
 v_layout.addWidget(combo_box)
+```
+修改数据
+```python
+data_session_storage.set_field("nickname", nickname)
+data_session_storage.set_field("total_token", allowTokenNumber)
+data_session_storage.set_field("online_token", online_number)
+data_session_storage.set_field("mobile", mobile)
+data_session_storage.set_field("expirationDate",
+                               datetime.datetime.fromtimestamp(expirationDate / 1000).strftime("%Y-%m-%d"))
 ```
 
 ******
