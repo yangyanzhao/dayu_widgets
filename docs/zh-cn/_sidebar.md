@@ -17,6 +17,7 @@
         * [MFieldMixin 双向绑定和计算属性](/zh-cn/field_mixin.md)
         * [TinyDB 单线程 轻量级 数据库](/zh-cn/tiny_db.md)
         * [MFieldMixin与TinyDB 整合使用](/zh-cn/field_mixin_tiny_db.md)
+        * [DataSessionStorage 和 DataLocalStorage](/zh-cn/session_storage_local_storage.md)
         * [MStackedWidget 页面容器](/zh-cn/stacked_widget.md)
         * [MDockWidget 停靠窗口](/zh-cn/dock_widget.md)
         * [阴影效果](/zh-cn/shadow.md)
