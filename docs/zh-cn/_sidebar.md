@@ -19,6 +19,7 @@
         * [MFieldMixin与TinyDB 整合使用](/zh-cn/field_mixin_tiny_db.md)
         * [MStackedWidget 页面容器](/zh-cn/stacked_widget.md)
         * [MDockWidget 停靠窗口](/zh-cn/dock_widget.md)
+        * [阴影效果](/zh-cn/shadow.md)
 
     * 布局
         * [MFlowLayout 浮动布局](/zh-cn/flow_layou.md)
