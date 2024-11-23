@@ -20,6 +20,7 @@
         * [DataSessionStorage 和 DataLocalStorage](/zh-cn/session_storage_local_storage.md)
         * [MStackedWidget 页面容器](/zh-cn/stacked_widget.md)
         * [MDockWidget 停靠窗口](/zh-cn/dock_widget.md)
+        * [阴影效果](/zh-cn/shadow.md)
 
     * 布局
         * [MFlowLayout 浮动布局](/zh-cn/flow_layou.md)
