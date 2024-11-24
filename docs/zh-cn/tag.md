@@ -7,7 +7,7 @@
   - ```python
     tag1 = MTag("普通标签")
     tag2 = MTag("可关闭标签").closeable()
-    tag2.sig_closed.connect(functools.partial(lambda: print("标签已关闭")))
+    tag2.sig_closed.connect(functools.partial(lambda: print("标签已关闭"))) # 如果是循环添加，则记得使用：tag.sig_closed.connect(lambda tag=tag: print(tag.text()))，把tag从lambda中传进去。
     tag3 = MTag("可点击标签").clickable()
     tag3.sig_clicked.connect(lambda: print("标签已点击"))
     tag4 = MTag("无边框标签").no_border()  # 无边框模式
