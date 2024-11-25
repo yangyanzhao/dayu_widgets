@@ -118,6 +118,52 @@
     ```
     ![img_99.png](img_99.png)
 ******
+## 双向绑定
+```python
+combo_box = MComboBox()
+        setup_main_theme(combo_box)
+        menu = MMenu(exclusive=True, cascader=True, parent=self)  # cascader是否级联
+        a = []
+        # 提示词预览与编辑框
+        text_edit = MTextEdit().autosize()
+        # 组成父子结构
+        menu.set_data(a)
+        menu.sig_value_changed.connect(lambda x: text_edit.setPlainText(x[-1]))
+
+        def formatter_show(values):
+            # 这里应该将value转换成label来显示
+            # 递归函数，用于查找匹配的label
+            def find_label(data, value):
+                for item in data:
+                    if item["value"] == value:
+                        return item["label"]
+                    if "children" in item:
+                        result = find_label(item["children"], value)
+                        if result:
+                            return result
+                return None
+
+            # 如果是数组，则进行label转换
+            if isinstance(values, list):
+                # 转换b中的value为label
+                labels = [find_label(a, value) for value in values]
+                # 如果存在找不到的控制，咋回显原始数据
+                if None in labels:
+                    return values
+                return " / ".join(labels)
+            # 如果是字符串，则直接返回
+            if isinstance(values, str):
+                return values
+
+        combo_box.set_formatter(formatter_show)  # 设置级联显示格式
+        combo_box.set_menu(menu)
+
+        # 双向绑定
+        data_wx_local_storage.widget_bind_value(widget=combo_box, field_name="prompt_menu_select", default_value="",
+                                                widget_property="value", widget_signal="sig_value_changed")
+        v_layout.addWidget(combo_box)
+        v_layout.addWidget(text_edit)
+```
 ## 搜索功能
   - ```python
     combo_box = MComboBox()
