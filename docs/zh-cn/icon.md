@@ -13,6 +13,22 @@
     - ![img_136.png](img_136.png)
   - 如果是已经下载好的svg文件，直接修改文件即可，设置`fill="#555555"`。
     - ![img_137.png](img_137.png)
+## 显示图标
+- 如果只需要显示图标而不需要自定义大小，可以直接使用 QIcon 配合 QPushButton 或 QAction 等来显示图标。
+```python
+button = QPushButton()
+button.setIcon(MIcon("cloud_fill.svg"))
+```
+## 配合QLabel显示图标
+```python
+self.label = QLabel(self)
+self.label.setPixmap(pixmap)
+```
+## 独立显示图标
+```python
+svg_widget = QSvgWidget(icons['操作成功.svg'])
+svg_widget.setFixedSize(QSize(32, 32))
+```
 ## 示例代码
 
 ```python
